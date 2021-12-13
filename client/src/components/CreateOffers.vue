@@ -2,7 +2,7 @@
     <div class="px-12 max-w-screen-md flex flex-col mx-auto">
         <div class="flex mt-5 items-center text-lg w-full mx-auto">
             <label for="programming_language" class="w-full">Linguaggio di programmzaione richiesto</label>
-            <select  v-model="offer.programming_language"  class="w-72 p-2">
+            <select v-model="offer.programming_language" class="w-72 p-2">
                 <option value="php">PHP</option>
                 <option value="java">Java</option>
                 <option value="python">Python</option>
@@ -70,11 +70,20 @@ export default {
     },
 
     methods: {
+
+
         async saveOffer() {
             let response;
 
-            this.offer.img_language = "https://www.svgrepo.com/show/303208/php-1-logo.svg";
-
+            if (this.offer.programming_language == 'php'){
+                this.offer.img_language = "https://www.svgrepo.com/show/303208/php-1-logo.svg"
+            }if (this.offer.programming_language == 'java') {
+                this.offer.img_language = "https://thumbs.dreamstime.com/b/java-logo-vector-design-commercial-brand-trademark-118452997.jpg"
+            }if(this.offer.programming_language =='python') {
+                this.offer.img_language = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png"
+            }if(this.offer.programming_language =='c') {
+                this.offer.img_language = "https://e7.pngegg.com/pngimages/465/779/png-clipart-blue-and-white-c-logo-the-c-programming-language-computer-programming-computer-icons-programmer-blue-angle.png"
+            }
             response = await axios.post("http://localhost:8000/api/offers/create", this.offer);
 
             console.log(response.data);

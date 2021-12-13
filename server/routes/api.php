@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OfferController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post("/offer/create",[OfferController::class,"create_offer"]);
+Route::post("/offers/create",[OfferController::class,"create_offer"]);
 Route::get("/offers",[OfferController::class,"list"]);
 Route::get("/offers/{id}",[OfferController::class,"detail_offer"]);
